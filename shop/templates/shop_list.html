@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Shop List
+{% endblock %}
+
+{% block body %}
+
+
+<div>
+
+        <h1> Hello</h1>
+        {% for shop in shops %}
+    
+                        <div>
+                        <td>{{shop.name}} {{shop.owner}}</td>
+                    
+                    
+                  <a href="{% url 'shop_detail' shop.id%}"><button class="employee-add">DETAILS</button></a> 
+                        </div>
+             
+       
+           
+    
+        {% endfor %}
+</div>
+
+
+   
+  
+{% endblock %}

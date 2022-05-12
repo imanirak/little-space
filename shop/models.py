@@ -36,9 +36,9 @@ class Inventory(models.Model):
 
 class Shop(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-    shop_name = models.CharField(max_length=80)
-    shop_description = models.TextField(max_length=180)
+    name = models.CharField(max_length=80)
+    description = models.TextField(max_length=180)
     inventory = models.ManyToManyField(Inventory, blank=True)
     
     def __str__(self):
-        return self.shop_name
+        return self.name

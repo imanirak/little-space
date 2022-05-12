@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Delete Shop</h1>
+
+<form action="" method="POST">
+
+    <h4>Are you sure you want to delete <strong>{{ shop.name }}</strong>?</h4>
+                        {% csrf_token %}
+                        <input type="submit" value="Yes - Delete">
+                        <a href="{% url 'shop_show' shop.id %}">Cancel</a>
+                    </form>
+
+{% endblock %}
