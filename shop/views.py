@@ -16,3 +16,5 @@ class Home(TemplateView):
         }
     
         return render(request, context)
+    
+    
