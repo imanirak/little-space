@@ -1,21 +1,33 @@
-<!-- At the top of the file  -->
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <script defer src="{% static 'scripts/script.js' %}"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- in our html head tag add the following  -->
-<link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
-<script src="{% static 'scripts/script.js' %}" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- we can put any cdns, scripts, or css here -->
-    <title></title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
 </head>
 <body>
-  {% block content %}  
+    <nav>
+        <a href="/">Home</a>
+        <span> | </span>
+        <a href="/shop">All Shops</a>
+        <span> | </span>
+        <a href="/admin">Admin</a>
+        <span> | </span>
+        <a href="/shop/new">Create a Shop</a>
+   
+    </nav>
+    {% block nav %}
+    {% endblock %}
+    {% block body %}
+        {% endblock %}
 
-  {% endblock %}
 </body>
 </html>

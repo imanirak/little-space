@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% for shop in shops %} 
+<ul>
+<li>{{shop.name}}</li>
+<li>{{shop.description}}</li>
+<li>{{shop.inventory}}</li>
+<li>{{shop.owner}}</li>
+{% endfor %}
+</ul>
