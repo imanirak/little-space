@@ -1,13 +1,43 @@
+
+from .models import User, Shop, Item, Inventory
 from django.shortcuts import render
-from django.views import View 
-from django.http import HttpResponseRedirect
+from django.views import View
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
-from .models import User, Shop, Item, Inventory
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 from django.urls import reverse
+from django.db.models import F
+from django.forms import Select
+###########################SIGNUP##################################
+
+@login_required
+def profile(request, username):
+    owner = User.objects.get(username=username)
+    shops = Shop.objects.last()
+    items = Item.objects.all()
+    inventory = Inventory.objects.all()
+
+    return render(request, 'profile.html', {'username': username, 'shops': shops, 'inventory':inventory, 'items': items})
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect('/user/'+str(user))
+        else:
+            return render(request,'signup.html', {'form': form})
+    else:
+        form = UserCreationForm()
+        return render(request, 'signup.html', {'form': form})
+    
 
 class Home(TemplateView):
     template_name='home.html'
