@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% for inventory in inventorys %} 
+<ul>
+<li>{{inventory.name}}</li>
+<li>{{inventory.item}}</li>
+<li>{{inventory.total}}</li>
+
+{% endfor %}
+</ul>

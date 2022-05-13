@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+Inventory List
+
+
+{% block body %}
+
+
+<div>
+
+        <h1> Hello</h1>
+        {% for inventory in inventorys %}
+    
+                        <div>
+                        <td>{{inventory.name}} {{shop.owner}}</td>
+                    
+                    
+                  <a href="{% url 'inventory_detail' inventory.id%}"><button>DETAILS</button></a> 
+                        </div>
+             
+      
+        {% endfor %}
+</div>
+
+
+   
+  
+{% endblock %}
