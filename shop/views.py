@@ -164,3 +164,63 @@ class Inventory_Delete(DeleteView):
 def Inventory_Show(request, inventory_id):
     inventorys = Inventory.objects.get(id=inventory_id)
     return render(request, 'inventory_show.html', {'inventorys': inventorys})
+
+
+
+
+
+#ITEM VIEWS
+class Item_Create(CreateView):
+  model = Item
+  fields = '__all__'
+  template_name='item_create.html'
+
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.user = self.request.user
+    self.object.save()
+    return HttpResponseRedirect('/item/')
+
+
+
+class Item_List(TemplateView):
+    template_name = "item_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+                # to get the query parameter we have to acccess it in the request.GET dictionary object  
+        # If a query exists we will filter by name       
+        if name != None:
+            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+
+            context["items"] = Item.objects.filter(name__icontains=name)
+            context["header"] = f'Searching for {name}'
+        else: 
+            context["items"] = Item.objects.all() # this is where we add the key into our context object for the view to use
+            context["header"] = "Items:"
+        return context
+
+    
+   
+class Item_Detail(DetailView):
+    model = Item
+    template_name = "item_detail.html"
+    
+
+class Item_Update(UpdateView):
+    model = Item
+    fields = '__all__'
+    template_name = "item_update.html"
+    def get_success_url(self):
+        return reverse('item_detail', kwargs={'pk': self.object.pk})
+
+class Item_Delete(DeleteView):
+    model = Inventory
+    template_name = 'item_delete.html'
+    success_url = "/item/"
+
+
+def Item_Show(request, item_id):
+    items = Item.objects.get(id=item_id)
+    return render(request, 'item_show.html', {'items': items})

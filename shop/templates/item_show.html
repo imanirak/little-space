@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<h1>{{item.name}}</h1>
+
+
+
+<di class="update">
+    <a href="{% url 'item_delete' item.pk %}"><button>Edit {{item.name}}</button> </a>
+    <a href="{% url 'item_delete' item.id %}"><button>Delete Inventory</button> </a>
+{% endblock %}

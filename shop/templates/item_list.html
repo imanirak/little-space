@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Item List
+{% endblock %}
+
+{% block body %}
+
+
+<div>
+
+        <h1> Item List</h1>
+        {% for item in items %}
+    
+                        <div>
+                        <td>{{item.name}} </td>
+                    
+                    
+                  <a href="{% url 'item_detail' item.id%}"><button>DETAILS</button></a> 
+                        </div>
+             
+       
+           
+    
+        {% endfor %}
+</div>
+
+
+   
+  
+{% endblock %}

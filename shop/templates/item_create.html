@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Add Item</h1>
+<form method="post">
+    <!-- Security Feature  -->
+    {% csrf_token %} 
+    <!--  Generate inputs  -->
+    {{form.as_p}} 
+    <!--  Submit form  -->
+      <input type="submit" value="Submit" />
+</form>
+{% endblock %}

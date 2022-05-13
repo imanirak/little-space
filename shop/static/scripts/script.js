@@ -1,1 +1,5 @@
-console.log("sanity check")
+// import { Application } from '@splinetool/runtime';
+
+// const canvas = document.getElementById('canvas3d');
+// const app = new Application(canvas);
+// app.load('https://prod.spline.design/NEtKA1ZvEnccPWM6/scene.splinecode');
