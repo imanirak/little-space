@@ -105,3 +105,62 @@ class Shop_Delete(DeleteView):
 def Shop_Show(request, device_id):
     shops = Shop.objects.get(id=device_id)
     return render(request, 'shop_show.html', {'shops': shops})
+
+
+
+
+#INVENTORY VIEWS
+class Inventory_Create(CreateView):
+  model = Inventory
+  fields = '__all__'
+  template_name='inventory_create.html'
+
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.user = self.request.user
+    self.object.save()
+    return HttpResponseRedirect('/inventory/')
+
+
+
+class Inventory_List(TemplateView):
+    template_name = "inventory_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+                # to get the query parameter we have to acccess it in the request.GET dictionary object  
+        # If a query exists we will filter by name       
+        if name != None:
+            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+
+            context["inventorys"] = Inventory.objects.filter(name__icontains=name)
+            context["header"] = f'Searching for {name}'
+        else: 
+            context["inventorys"] = Inventory.objects.all() # this is where we add the key into our context object for the view to use
+            context["header"] = "Inventory:"
+        return context
+
+    
+   
+class Inventory_Detail(DetailView):
+    model = Inventory
+    template_name = "inventory_detail.html"
+    
+
+class Inventory_Update(UpdateView):
+    model = Inventory
+    fields = '__all__'
+    template_name = "inventory_update.html"
+    def get_success_url(self):
+        return reverse('inventory_detail', kwargs={'pk': self.object.pk})
+
+class Inventory_Delete(DeleteView):
+    model = Inventory
+    template_name = 'inventory_delete.html'
+    success_url = "/inventory/"
+
+
+def Inventory_Show(request, inventory_id):
+    inventorys = Inventory.objects.get(id=inventory_id)
+    return render(request, 'inventory_show.html', {'inventorys': inventorys})
