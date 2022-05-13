@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Delete Item</h1>
+
+<form action="" method="POST">
+
+    <h4>Are you sure you want to delete <strong>{{ item.name }}</strong>?</h4>
+                        {% csrf_token %}
+                        <input type="submit" value="Yes - Delete">
+                        <a href="{% url 'item_show' item.id %}">Cancel</a>
+                    </form>
+
+{% endblock %}
