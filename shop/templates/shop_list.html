@@ -6,16 +6,16 @@ Shop List
 {% block body %}
 
 
-<div class="center">
+<div class="position-absolute top-0 start-0 mx-5 my-5">
       <div class="container">
             <div class="row">
                   {% for shop in shops %}
-                  {{shop.shop_logo}}
-                  <div class="card" style="width: 18rem;">
-                        <img src="{{shop.shop_logo}}" class="card-img-top" alt="shoplogo">
+                  <div class="card col-md mx-3" style="width: 18rem;">
+                        <img src="../static/media/300Logo.png" class="card-img-top" alt="shoplogo">
                         <div class="card-body">
                           <h5 class="card-title">{{shop.name}}</h5>
-                          <p class="card-text">{{shop.owner}} {{shop.description}}</p>
+                          <h5 class="card-title">{{shop.owner}}</h5>
+                          <p class="card-text">{{shop.description}}</p>
                           <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
                         </div>
                       </div>
