@@ -36,6 +36,7 @@ class Inventory(models.Model):
 
 class Shop(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    shop_logo = models.ImageField()
     name = models.CharField(max_length=80)
     description = models.TextField(max_length=180)
     inventory = models.ManyToManyField(Inventory, blank=True)

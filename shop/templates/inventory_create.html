@@ -1,12 +1,28 @@
-{% extends 'base.html' %}
-{% block body %}
-<h1>Add To Inventory</h1>
-<form method="post">
-    <!-- Security Feature  -->
-    {% csrf_token %} 
-    <!--  Generate inputs  -->
-    {{form.as_p}} 
-    <!--  Submit form  -->
-      <input type="submit" value="Submit" />
-</form>
+
+{% extends 'base.html' %} {% block body %}
+
+<div class="center">
+<div class="one-third column"> 
+
+  <div class="wide-box">
+    <h1 class="little-space text-center">Add to Inventory</h1>
+    <form method="post">
+      <!-- Security Feature  -->
+      {% csrf_token %} 
+      <!--  Generate inputs  -->
+      {{form.as_p}} 
+      <!--  Submit form  -->
+        <input type="submit" value="Submit" />
+  </form>
+
+  </div>
+</div>
+
+
+
+ 
+</div>
+
+
+
 {% endblock %}
