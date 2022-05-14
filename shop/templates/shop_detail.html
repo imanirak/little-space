@@ -6,11 +6,13 @@
     <h3>{{shop.owner}}</h3>
     <h3>{{shop.name}}</h3>
     <h3>{{shop.description}}</h3>
-
+    {% for inventory in shop.inventory.all %}
+    <h3>{{inventory}}</h3>
+{% endfor %}
 </div>
 
 <div class="update">
-  <a href="{% url 'shop_list'%}"><button>VIEW ALL SHOPS</button></a>
+
   <a href="{% url 'shop_update' shop.pk %}"><button>Edit {{device.device_type}}</button></a>
   <a href="{% url 'shop_delete' shop.pk %}"><button>Delete {{device.device_type}}</button></a>
 

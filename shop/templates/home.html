@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% block body %}
-    <h1>Home</h1>
-   
+
+
+{% if user.is_authenticated %}
+
+
+
+{% else %}
+
+<div class="spline">
+    <iframe src='https://my.spline.design/miniroommusiccopy-d4ac2aab1157b6346671b45ed46c5bc1/' frameborder='0' width='100%' height='100%'></iframe>
+
+</div>
+<div>
+
+</div>
+
+   {% endif %}
 {% endblock %}

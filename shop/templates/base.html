@@ -20,15 +20,14 @@
         <span> | </span>
         <a href="/accounts/logout">Logout</a>
         <span> | </span>
+        
         {% else %}
         <span><a href="{% url 'login' %}">Login</a></span>
         <span> | </span>
         <span><a href="{% url 'signup' %}">SignUp</a></span>
         <span> | </span>
-        {% endif %}
-        <span> | </span>
-        <a href="/">Home</a>
-        <span> | </span>
+         {% endif %}
+    
         <a href="/admin">Admin</a>
         <span> | </span>
         <a href="/shop">All Shops</a>
