@@ -19,11 +19,11 @@ from django.forms import Select
 @login_required
 def profile(request, username):
     owner = User.objects.get(username=username)
-    shops = Shop.objects.last()
+    shops = Shop.objects.filter(owner=owner.id)
     items = Item.objects.all()
     inventory = Inventory.objects.all()
 
-    return render(request, 'profile.html', {'username': username, 'shops': shops, 'inventory':inventory, 'items': items})
+    return render(request, 'profile.html', {'username': username, 'shops': shops, 'inventory':inventory, 'items': items, 'owner':owner})
 
 def signup_view(request):
     if request.method == 'POST':
@@ -40,6 +40,7 @@ def signup_view(request):
     
 
 class Home(TemplateView):
+    shops = Shop.objects.all()
     template_name='home.html'
     
     def login_page(request):
