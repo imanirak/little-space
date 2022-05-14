@@ -1,10 +1,38 @@
-{% extends 'base.html' %}
 
-{% block body %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+
+
+{% extends 'base.html' %} {% block body %}
+
+<div class="center">
+<div class="one-third column"> 
+
+  <div class="wide-box">
+    <h1 class="little-space text-center">Register</h1>
+    <div class="">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="left-center"><button type="submit">Sign up</button></div>
+        
+      </form>
+    </div>
+    
+<div class="row text-center">
+  <div class="one-half column">
+    <a class="link-color" href="{% url 'home' %}">go home</a>
+  </div>
+
+  <div class="one-half column">
+<a class="link-color" href="{% url 'login' %}">login</a></div>
+    </div>
+</div>
+</div>
+
+
+
+ 
+</div>
+
+
+
 {% endblock %}
