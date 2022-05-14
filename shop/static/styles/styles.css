@@ -79,7 +79,7 @@ body {
   }
 
 .left-center {
-    padding-left: 20em;
+    padding-left: 15em;
 }
 
 .align-left {
@@ -87,7 +87,7 @@ body {
 }
 
 .link-color  {
-    font-size:1em;
+    font-size:0.5em;
     color:#A195EC;
     text-decoration:none;
 }

@@ -1,12 +1,15 @@
 {% load static %}
-{% load bootstrap5 %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    {% if request.path == "/" %}  
      <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/skeleton.css' %}"> 
+     <link rel="stylesheet" href="{% static 'styles/skeleton.css' %}"> 
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% else %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% endif %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <script defer src="{% static 'scripts/script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -40,7 +43,7 @@
                 <a class="nav-link" href="/admin">Admin</a>
               </li>
               {% endif %}
-           
+        
               <li class="nav-item">
                 <a class="nav-link" href="/shop/new">Create a Space</a>
               </li>
@@ -58,8 +61,9 @@
       </nav>
 
         </div>
+     
  
-        {% elif request.path == "/"%}
+        {% elif request.path == "/" %}
         <div class="container center">
             <div class="one-third column">&nbsp;</div>
 <div class="one-third column"> 
@@ -72,9 +76,40 @@
         </div>
 
 
+        {% elif request.path == "accounts/login/ " %}
+    
+
+
+
         {% else %} 
       
-       
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E6BECE;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">LITTLE-SPACE</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"  >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active"  href="{% url 'login' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shop_list' %}">See All Spaces</a>
+                  </li>
+              
+            
+                </ul>
+                <!-- <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
+              </div>
+            </div>
+          </nav>
        
 
          {% endif %}
