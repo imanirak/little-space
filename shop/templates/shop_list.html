@@ -6,23 +6,25 @@ Shop List
 {% block body %}
 
 
+<div class="center">
+      <div class="container">
+            <div class="row">
+                  {% for shop in shops %}
+                  {{shop.shop_logo}}
+                  <div class="card" style="width: 18rem;">
+                        <img src="{{shop.shop_logo}}" class="card-img-top" alt="shoplogo">
+                        <div class="card-body">
+                          <h5 class="card-title">{{shop.name}}</h5>
+                          <p class="card-text">{{shop.owner}} {{shop.description}}</p>
+                          <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
+                        </div>
+                      </div>
+                      {% endfor %}
+            </div>
+        </div>
 <div>
 
-        <h1> Hello</h1>
-        {% for shop in shops %}
     
-                        <div>
-                        <td>{{shop.name}} {{shop.owner}}</td>
-                    
-                    
-                  <a href="{% url 'shop_detail' shop.id%}"><button>DETAILS</button></a> 
-                        </div>
-             
-       
-           
-    
-        {% endfor %}
-</div>
 
 
    
