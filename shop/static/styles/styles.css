@@ -47,6 +47,16 @@ body {
       text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3)  ; 
   }
 
+
+  .header-ls { 
+    font-size:2em;
+    text-align:center;
+    font-family: Cedarville Cursive;
+    color:white;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3)  ; 
+}
+
+
   .button-width {
       width:relative;
   }

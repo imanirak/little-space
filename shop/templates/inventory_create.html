@@ -1,11 +1,13 @@
 
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} 
+ {% block body %}
 
 <div class="center">
+  <div class="one-third column">&nbsp;</div>
 <div class="one-third column"> 
-
-  <div class="wide-box">
-    <h1 class="little-space text-center">Add to Inventory</h1>
+  
+    <h1 class="header-ls">Create New Space Inventory</h1>
+    <hr>
     <form method="post">
       <!-- Security Feature  -->
       {% csrf_token %} 
@@ -14,11 +16,12 @@
       <!--  Submit form  -->
         <input type="submit" value="Submit" />
   </form>
-
+<br>
+    <a href="{% url 'shop_list' %}">go back</a>
   </div>
-</div>
 
 
+<div class="one-third column">&nbsp;</div>
 
  
 </div>

@@ -4,10 +4,12 @@
 <head>
 
     {% if request.path == "/" %}  
+    
      <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
      <link rel="stylesheet" href="{% static 'styles/skeleton.css' %}"> 
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% else %}
+    <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% endif %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
@@ -35,9 +37,6 @@
               <li class="nav-item">
                 <a class="nav-link active"  href="/user/{{user.username}}">Hello, {{user.username}}!</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/accounts/logout">Logout</a>
-              </li>
               {% if user.is_superuser %} 
               <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin</a>
@@ -49,6 +48,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/shop">All Spaces</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/accounts/logout">Logout</a>
               </li>
         
             </ul>

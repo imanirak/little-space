@@ -1,12 +1,30 @@
-{% extends 'base.html' %}
-{% block body %}
-<h1>Create A Shop</h1>
-<form method="post">
-    <!-- Security Feature  -->
-    {% csrf_token %} 
-    <!--  Generate inputs  -->
-    {{form.as_p}} 
-    <!--  Submit form  -->
-      <input type="submit" value="Submit" />
-</form>
+{% extends 'base.html' %} 
+ {% block body %}
+
+<div class="center">
+  <div class="one-third column">&nbsp;</div>
+<div class="one-third column"> 
+  
+    <h1 class="header-ls">Create A Shop</h1>
+    <hr>
+    <form method="post">
+      <!-- Security Feature  -->
+      {% csrf_token %} 
+      <!--  Generate inputs  -->
+      {{form.as_p}} 
+      <!--  Submit form  -->
+        <input type="submit" value="Submit" />
+  </form>
+<br>
+    <a href="{% url 'shop_list' %}">go back</a>
+  </div>
+
+
+<div class="one-third column">&nbsp;</div>
+
+ 
+</div>
+
+
+
 {% endblock %}

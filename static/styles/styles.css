@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 
 
+
 body {
     background-color:#FEC9DF;
 }
@@ -22,7 +23,6 @@ body {
   }
   
 
-
 .center {
     margin: 0;
     position: absolute;
@@ -40,6 +40,8 @@ body {
   }
 
   .little-space { 
+      font-size:5em;
+      text-align:center;
       font-family: Cedarville Cursive;
       color:white;
       text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3)  ; 
@@ -65,10 +67,33 @@ body {
     margin:auto;
     padding:40px;
     height:auto;
-    width:550px;
+    width:580px;
   }
 
   .text-center{
       text-align:center;
   }
+
+  .navbar-custom {
+      background-color:#E6BECE;
+  }
+
+.left-center {
+    padding-left: 15em;
+}
+
+.align-left {
+    text-align:left;
+}
+
+.link-color  {
+    font-size:0.5em;
+    color:#A195EC;
+    text-decoration:none;
+}
+
+.link-color:hover {
+    color:white;
+    text-decoration:none;
+}
 
