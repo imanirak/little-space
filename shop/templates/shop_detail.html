@@ -52,9 +52,9 @@
 
   <div class="right text-center">
     {% if shop.owner == user %}
-      <h5> modify {{shop.name}}</h5>
-        <a href="{% url 'shop_update' shop.pk %}"><button>Edit {{shop.name}}</button></a>
-        <a href="{% url 'shop_delete' shop.pk %}"><button>Delete {{shop.name}}</button></a>
+      <h5> Modify {{shop.name}}</h5>
+        <a href="{% url 'shop_update' shop.pk %}"><button class="btn btn-light" >Edit {{shop.name}}</button></a>
+        <a href="{% url 'shop_delete' shop.pk %}"><button class="btn btn-light">Delete {{shop.name}}</button></a>
       </div>
       {% endif %}
 </div>
