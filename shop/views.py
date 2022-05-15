@@ -54,6 +54,8 @@ class Home(TemplateView):
     
     
 #SHOP VIEWS
+
+@method_decorator(login_required, name="dispatch")
 class Shop_Create(CreateView):
   model = Shop
   form_class = ShopForm
@@ -94,6 +96,7 @@ class Shop_Detail(DetailView):
     
     
 
+@method_decorator(login_required, name="dispatch")
 class Shop_Update(UpdateView):
     model = Shop
     fields = '__all__'
@@ -101,6 +104,8 @@ class Shop_Update(UpdateView):
     def get_success_url(self):
         return reverse('shop_detail', kwargs={'pk': self.object.pk})
 
+
+@method_decorator(login_required, name="dispatch")
 class Shop_Delete(DeleteView):
     model = Shop
     template_name = 'shop_delete.html'
@@ -115,6 +120,8 @@ def Shop_Show(request, shop_id):
 
 
 #INVENTORY VIEWS
+
+@method_decorator(login_required, name="dispatch")
 class Inventory_Create(CreateView):
   model = Inventory
   fields = '__all__'
@@ -128,6 +135,7 @@ class Inventory_Create(CreateView):
 
 
 
+@method_decorator(login_required, name="dispatch")
 class Inventory_List(TemplateView):
     template_name = "inventory_list.html"
 
@@ -147,12 +155,14 @@ class Inventory_List(TemplateView):
         return context
 
     
-   
+ 
+@method_decorator(login_required, name="dispatch")  
 class Inventory_Detail(DetailView):
     model = Inventory
     template_name = "inventory_detail.html"
     
 
+@method_decorator(login_required, name="dispatch")
 class Inventory_Update(UpdateView):
     model = Inventory
     fields = '__all__'
@@ -160,6 +170,8 @@ class Inventory_Update(UpdateView):
     def get_success_url(self):
         return reverse('inventory_detail', kwargs={'pk': self.object.pk})
 
+
+@method_decorator(login_required, name="dispatch")
 class Inventory_Delete(DeleteView):
     model = Inventory
     template_name = 'inventory_delete.html'
@@ -175,6 +187,8 @@ def Inventory_Show(request, inventory_id):
 
 
 #ITEM VIEWS
+
+@method_decorator(login_required, name="dispatch")
 class Item_Create(CreateView):
   model = Item
   form_class = ItemForm
@@ -189,6 +203,7 @@ class Item_Create(CreateView):
 
 
 
+@method_decorator(login_required, name="dispatch")
 class Item_List(TemplateView):
     template_name = "item_list.html"
 
@@ -208,12 +223,14 @@ class Item_List(TemplateView):
         return context
 
     
-   
+
+@method_decorator(login_required, name="dispatch")
 class Item_Detail(DetailView):
     model = Item
     template_name = "item_detail.html"
     
 
+@method_decorator(login_required, name="dispatch")
 class Item_Update(UpdateView):
     model = Item
     fields = '__all__'
@@ -221,12 +238,15 @@ class Item_Update(UpdateView):
     def get_success_url(self):
         return reverse('item_detail', kwargs={'pk': self.object.pk})
 
+
+@method_decorator(login_required, name="dispatch")
 class Item_Delete(DeleteView):
     model = Inventory
     template_name = 'item_delete.html'
     success_url = "/item/"
 
 
+@method_decorator(login_required, name="dispatch")
 def Item_Show(request, item_id):
     items = Item.objects.get(id=item_id)
     return render(request, 'item_show.html', {'items': items})
