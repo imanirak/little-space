@@ -1,21 +1,86 @@
 {% extends 'base.html' %} 
 {% block body %}
+<!-- 
+<div class="center">
+  <div class="d-flex flex-row wide-box">
 
-<h1> Edit {{shop.name}}</h1>
+<div class="box">
+  </div>
+  -->
 
-    <h3>{{shop.owner}}</h3>
-    <h3>{{shop.name}}</h3>
-    <h3>{{shop.description}}</h3>
+  <div class="container center wide-box">
+    <div class="one-third column">
+      <div class="circle">
+        <img src="{{shop.shop_logo}}">
+<p class="little-space">{{shop.name}}</p>
+<hr>
+  </div>
+
+  <h6>space owned by: <a href="/user/{{shop.owner}}">{{shop.owner}}</a></h6>
+  <p>{{shop.description}}</p>
+
+<span><a class="button button-details" href="{% url 'signup' %}">Contact Us</a></span>
+
+    </div>
+
+
+<div class="one-third column"> 
+ <div class="container">
+            <div class="row">
+                  <div class="card col-md mx-3" style="width: 18rem;">
+                        <img src="./static/media/300Logo.png" class="card-img-top" alt="shoplogo">
+            <!-- {% for inventory in shop.inventory.all %} -->
+                        <div class="card-body">
+                          <h5 class="card-title">{{inventory.item.name}}</h5>
+                          <h5 class="card-text">type | {{inventory.item.item_type}}</h5>
+                          <p>{{inventory.item.description}}</p>
+                          <h5 class="card-text">Condition | {{inventory.item.condition}}</h5>
+                          <p class="card-text">$ {{inventory.item.price}}</p>
+                        <!-- {% endfor %} -->
+                          <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
+                        </div>
+                      </div>
+            </div>
+        </div>
+</div>
+
+
+<div class="one-third column">
+
+  <div class="right">
+    {% if shop.owner == user %}
+      <h5> modify {{shop.name}}</h5>
+        <a href="{% url 'shop_update' shop.pk %}"><button>Edit {{shop.name}}</button></a>
+        <a href="{% url 'shop_delete' shop.pk %}"><button>Delete {{shop.name}}</button></a>
+      </div>
+      {% endif %}
+</div>
+
+
+</div>
+
+
+
+
+
+  <!-- <div class="box right">
+
     {% for inventory in shop.inventory.all %}
-    <h3>{{inventory}}</h3>
-{% endfor %}
-</div>
+    <h3>{{inventory.item.name}}</h3>
+    {% endfor %}
+  
+  </div> -->
 
-<div class="update">
 
-  <a href="{% url 'shop_update' shop.pk %}"><button>Edit {{device.device_type}}</button></a>
-  <a href="{% url 'shop_delete' shop.pk %}"><button>Delete {{device.device_type}}</button></a>
 
-</div>
+
+
+
+   
+
+
+
+
+
 
 {% endblock %}

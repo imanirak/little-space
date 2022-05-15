@@ -28,7 +28,7 @@ class Item(models.Model):
 
 class Inventory(models.Model):
     name = models.CharField(max_length=80)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    item = models.ManyToManyField(Item, blank=True)
     total = models.PositiveIntegerField(default=0)
     
     def __str__(self):
