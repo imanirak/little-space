@@ -14,6 +14,8 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse
 from django.db.models import F
 from django.forms import Select
+from .forms import ShopForm, ItemForm
+
 ###########################SIGNUP##################################
 
 @login_required
@@ -54,6 +56,7 @@ class Home(TemplateView):
 #SHOP VIEWS
 class Shop_Create(CreateView):
   model = Shop
+  form_class = ShopForm
   fields = '__all__'
   template_name='shop_create.html'
 
@@ -174,6 +177,7 @@ def Inventory_Show(request, inventory_id):
 #ITEM VIEWS
 class Item_Create(CreateView):
   model = Item
+  form_class = ItemForm
   fields = '__all__'
   template_name='item_create.html'
 
