@@ -3,9 +3,10 @@
 
 
 {% if user.is_authenticated %}
-
-
-
+{% for shop in object_list %}
+<img src="{{ shop.cover.url}}" alt="{{ shop.name }}">
+hello
+{% endfor %}
 {% else %}
 
 <div class="spline">

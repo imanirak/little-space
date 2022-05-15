@@ -18,7 +18,7 @@ class Item(models.Model):
     name = models.CharField(max_length=80)
     item_type = models.CharField(max_length=80)
     item_description = models.CharField(max_length=150)
-    item_img = models.ImageField()
+    item_img = models.ImageField(upload_to='images/')
     condition = models.CharField(max_length=10, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     is_sold = models.BooleanField(default=False)
@@ -36,7 +36,7 @@ class Inventory(models.Model):
 
 class Shop(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-    shop_logo = models.ImageField()
+    shop_logo = models.ImageField(upload_to='images/')
     name = models.CharField(max_length=80)
     description = models.TextField(max_length=180)
     inventory = models.ManyToManyField(Inventory, blank=True)
