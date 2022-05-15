@@ -1,17 +1,51 @@
 {% extends 'base.html'%}
 
 {% block body %}
-<h1>Profile</h1>
 
-{% if shops.count > 0 %}
+<div class="container center wide-box">
+
+    <h1 class="header-ls">{{user}} Profile</h1>
+    <hr>
+    <div class="row">
+        <div class="col box text-center">
+          My Spaces
+          <hr>
+        <p class="text-center">3</p>
+        </div>
+
+        <div class="one-third column ">&nbsp;</div>
+
+        <div class="col box text-center">
+           Total Sales
+          <hr>
+        <p class="text-center">$$$</p>
+        </div>
+
+        <div class="one-third column">&nbsp;</div>
+        
+        <div class="col box text-center">
+            Sold
+            <hr>
+          <p class="text-center">3</p>
+        </div>
+
+  
+</div>
+
+<div class="one-third column">&nbsp;</div>
+
+<div class="mx-3">
+<h1 class="header-ls">My Spaces</h1>
+<hr>
+    {% if shops.count > 0 %}
 
     {% for shop in shops %}
     
         {% if shop.owner == user %}
-    <ul>
-    <li>{{ shop.name }}</li>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-transparent">{{ shop.name }}  <a href="{% url 'shop_detail' shop.id%}"><button class="float-right btn btn-light">modify {{shop.name}}</button></a> </li>
     {% if user.is_authenticated %}
-    <a href="{% url 'shop_detail' shop.id%}"><button>DETAILS</button></a> 
+   
         {% endif %}
     </ul>
         {% endif %}
@@ -23,5 +57,11 @@
 
 {% endif %}
 
+</div>
+
+
+
+
+</div>
 
 {% endblock %}
