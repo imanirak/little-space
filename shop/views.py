@@ -58,7 +58,6 @@ class Home(TemplateView):
 @method_decorator(login_required, name="dispatch")
 class Shop_Create(CreateView):
   model = Shop
-  form_class = ShopForm
   fields = '__all__'
   template_name='shop_create.html'
 
@@ -191,7 +190,6 @@ def Inventory_Show(request, inventory_id):
 @method_decorator(login_required, name="dispatch")
 class Item_Create(CreateView):
   model = Item
-  form_class = ItemForm
   fields = '__all__'
   template_name='item_create.html'
 
