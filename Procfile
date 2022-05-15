@@ -1,1 +1,1 @@
-web: gunicorn lil-space.wsgi
+web: gunicorn lilspace.wsgi
