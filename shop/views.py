@@ -89,6 +89,7 @@ class Shop_Detail(DetailView):
     model = Shop
     template_name = "shop_detail.html"
     
+    
 
 class Shop_Update(UpdateView):
     model = Shop
@@ -103,8 +104,8 @@ class Shop_Delete(DeleteView):
     success_url = "/shop/"
 
 
-def Shop_Show(request, device_id):
-    shops = Shop.objects.get(id=device_id)
+def Shop_Show(request, shop_id):
+    shops = Shop.objects.get(id=shop_id)
     return render(request, 'shop_show.html', {'shops': shops})
 
 
