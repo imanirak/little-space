@@ -12,15 +12,16 @@
     <div class="one-third column">
       <div class="circle">
         <img src="">
-<p class="little-space">{{shop.name}}</p>
+<p class="header-ls">{{shop.name}}</p>
 <hr>
   </div>
 
   <h6>space owned by: <a href="/user/{{shop.owner}}">{{shop.owner}}</a></h6>
-  <p>{{shop.description}}</p>
 
-<span><a class="button-details" href="{% url 'signup' %}">Contact Us</a></span>
+  <p>{{shop.description}}
+    <span><a class=" float-right button-details btn" href="{% url 'signup' %}">Contact Us</a></span></p>
 
+<p></p>
 <hr>
     </div>
 
@@ -32,12 +33,13 @@
                         <img src="" class="card-img-top" alt="shoplogo">
                
                  {% for inventory in shop.inventory.all %}
+                 need item values here
                         <div class="card-body">
                           <h5 class="card-title">{{inventory.name}}</h5>
                           <h5 class="card-text">type | {{item.item_type}}</h5>
-                          <p>{{inventory.item.description}}</p>
-                          <h5 class="card-text">Condition | {{inventory.item.condition}}</h5>
-                          <p class="card-text">$ {{inventory.item.price}}</p>
+                          <p>{{item.description}}</p>
+                          <h5 class="card-text">Condition | {{item.condition}}</h5>
+                          <p class="card-text">$ {{item.price}}</p>
                         {% endfor %}
                           <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
                         </div>
