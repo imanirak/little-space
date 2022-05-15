@@ -1,15 +1,32 @@
 {% extends 'base.html' %} 
-
 {% block body %}
 
+<div class="center">
+ <div class="one-third column">&nbsp;</div>
+<div class="one-third column"> 
+ 
+   <h1 class="header-ls">Update {{inventory.name}}</h1>
+   <hr>
+   <form method="post">
+     <!-- Security Feature  -->
+     {% csrf_token %} 
+     <!--  Generate inputs  -->
+     {{form.as_p}} 
+     <!--  Submit form  -->
+     <div class="left-center">
+      <input type="submit" value="Submit" />
+     </div>
+ </form>
+<br>
+   <a href="{% url 'shop_list' %}">go back</a>
+ </div>
 
 
-<h1>Update {{inventory.name}}</h1>
+<div class="one-third column">&nbsp;</div>
 
-<form action="" method="post">
-    {% csrf_token %} 
-    {{form.as_p}} 
-    <input type="submit" value="Submit" />
-  </form>
 
-  {% endblock %}
+</div>
+
+
+
+{% endblock %}
