@@ -18,7 +18,7 @@ from .forms import ShopForm, ItemForm
 
 ###########################SIGNUP##################################
 
-@login_required
+
 def profile(request, username):
     owner = User.objects.get(username=username)
     shops = Shop.objects.filter(owner=owner.id)

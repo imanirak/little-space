@@ -18,7 +18,7 @@ class Item(models.Model):
     name = models.CharField(max_length=80)
     item_type = models.CharField(max_length=80)
     item_description = models.CharField(max_length=150)
-    item_img = models.ImageField(upload_to='images/')
+    item_img = models.ImageField(upload_to='images/', blank=True, null=True)
     condition = models.CharField(max_length=10, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     is_sold = models.BooleanField(default=False)
