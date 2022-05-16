@@ -1,15 +1,34 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %} 
 {% block body %}
 
-<h1>Delete Inventory</h1>
+<div class="center">
+ <div class="one-third column">&nbsp;</div>
+<div class="one-third column"> 
+ 
+   <form action="" method="POST">
+   
+       <h4>Are you sure you want to delete <br><strong class="header-ls">{{ inventory.name }}</strong>?</h4>
 
-<form action="" method="POST">
+   <hr>
+                           {% csrf_token %}
+                           
+                           <div class="text-center">
+                            <input type="submit" value="Yes - Delete">
+                            <a href="{% url 'item_show' item.id %}">Cancel</a>
+                           </div>
+                       
+                       </form>
+   
+<br>
+ </div>
 
-    <h4>Are you sure you want to delete <strong>{{ inventory.name }}</strong>?</h4>
-                        {% csrf_token %}
-                        <input type="submit" value="Yes - Delete">
-                        <a href="{% url 'inventory_show' inventory.id %}">Cancel</a>
-                    </form>
+
+<div class="one-third column">&nbsp;</div>
+
+
+</div>
+
+
 
 {% endblock %}

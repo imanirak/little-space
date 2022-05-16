@@ -239,7 +239,7 @@ class Item_Update(UpdateView):
 
 @method_decorator(login_required, name="dispatch")
 class Item_Delete(DeleteView):
-    model = Inventory
+    model = Item
     template_name = 'item_delete.html'
     success_url = "/item/"
 
