@@ -4,13 +4,13 @@
 
 <div class="container center wide-box">
 
-    <h1 class="header-ls">{{user}} Profile</h1>
+    <h1 class="header-ls">{{owner.username}} Profile</h1>
     <hr>
     <div class="row">
         <div class="col box text-center">
           My Spaces
           <hr>
-        <p class="text-center">3</p>
+        <p class="text-center">??</p>
         </div>
 
         <div class="one-third column ">&nbsp;</div>
@@ -26,7 +26,7 @@
         <div class="col box text-center">
             Sold
             <hr>
-          <p class="text-center">3</p>
+          <p class="text-center">??</p>
         </div>
 
   
@@ -35,8 +35,15 @@
 <div class="one-third column">&nbsp;</div>
 
 <div class="mx-3">
-<h1 class="header-ls">All of {{user}} Spaces</h1>
-<hr>
+    {% if owner != user %}
+    <h1 class="header-ls">Spaces Coming Soon</h1>
+    
+
+    {% else %}
+    <h1 class="header-ls">All of {{owner.username}} Spaces</h1>
+    <hr>
+
+{% endif %}
     {% if shops.count > 0 %}
 
     {% for shop in shops %}
@@ -54,6 +61,7 @@
 
         {% else %}
         <div class="text-center">
+   
             <h4 class="pg">{{user}} does not have any spaces</h1>
                
                 {% if request.user == user %}

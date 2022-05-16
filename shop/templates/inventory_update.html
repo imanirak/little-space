@@ -1,20 +1,21 @@
 {% extends 'base.html' %} 
 {% block body %}
-
+{% load crispy_forms_tags %}
 <div class="center">
  <div class="one-third column">&nbsp;</div>
 <div class="one-third column"> 
- 
+  <div class="one-third column"> 
+    <div class="wide-box">
    <h1 class="header-ls">Update {{inventory.name}}</h1>
    <hr>
    <form method="post">
      <!-- Security Feature  -->
      {% csrf_token %} 
      <!--  Generate inputs  -->
-     {{form.as_p}} 
+     {{ form|crispy }}
      <!--  Submit form  -->
      <div class="left-center">
-      <input type="submit" value="Submit" />
+      <input class="form-control" type="submit" value="Submit" />
      </div>
  </form>
 <br>
@@ -24,7 +25,7 @@
 
 <div class="one-third column">&nbsp;</div>
 
-
+</div>
 </div>
 
 

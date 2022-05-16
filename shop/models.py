@@ -12,14 +12,26 @@ CONDITION_CHOICES = (
     ("SAI", 'Sold As Is')
 )
 
+TYPE_CHOICES = (
+    ('W','Women'),
+    ( "M",'Men'),
+    ("Kids", "Kids" ),
+    ('Home', 'Home'),
+    ('Vintage & Collectible','Vintage & Collectible '),
+    ("Beauty", 'Beauty'),
+    ("Electronics", 'Electronics'),
+    ("Sports & Outdoors", 'Sports & Outdoors'),
+    ("Handmade", 'Handmade'),
+    ("Other", 'Other')
+)
 
 
 class Item(models.Model):
     name = models.CharField(max_length=80)
-    item_type = models.CharField(max_length=80)
+    item_type = models.CharField(max_length=150, choices=TYPE_CHOICES)
     item_description = models.CharField(max_length=150)
     item_img = models.ImageField(upload_to='images/', blank=True, null=True)
-    condition = models.CharField(max_length=10, choices=CONDITION_CHOICES)
+    condition = models.CharField(max_length=50, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     is_sold = models.BooleanField(default=False)
     
@@ -27,7 +39,7 @@ class Item(models.Model):
         return self.name
 
 class Inventory(models.Model):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80,blank=True)
     item = models.ManyToManyField(Item, blank=True)
     total = models.PositiveIntegerField(default=0, blank=True)
     
