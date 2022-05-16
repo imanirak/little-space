@@ -58,8 +58,9 @@ class Home(TemplateView):
 @method_decorator(login_required, name="dispatch")
 class Shop_Create(CreateView):
   model = Shop
-  fields = '__all__'
+  fields = ['owner', 'shop_logo', 'name', 'description']
   template_name='shop_create.html'
+  inventory = Inventory.objects.all()
 
   def form_valid(self, form):
     self.object = form.save(commit=False)
@@ -123,7 +124,7 @@ def Shop_Show(request, shop_id):
 @method_decorator(login_required, name="dispatch")
 class Inventory_Create(CreateView):
   model = Inventory
-  fields = '__all__'
+  fields = ['name', 'item']
   template_name='inventory_create.html'
 
   def form_valid(self, form):

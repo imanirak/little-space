@@ -19,7 +19,7 @@
   <h6>space owned by: <a href="/user/{{shop.owner}}">{{shop.owner}}</a></h6>
 
   <p>{{shop.description}}
-    <span><a class=" float-right button-details btn" href="{% url 'signup' %}">Contact Us</a></span></p>
+    <span><a class=" float-right button-details btn" href="mailto:{{user.email}}">Contact Us</a></span></p>
 
 <p></p>
 <hr>
@@ -34,6 +34,7 @@
                
                  {% for inventory in shop.inventory.all %}
                  need item values here
+                 
                         <div class="card-body">
                           <h5 class="card-title">{{inventory.name}}</h5>
                           <h5 class="card-text">type | {{item.item_type}}</h5>
