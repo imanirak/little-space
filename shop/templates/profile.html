@@ -35,8 +35,15 @@
 <div class="one-third column">&nbsp;</div>
 
 <div class="mx-3">
-<h1 class="header-ls">All of {{owner.username}} Spaces</h1>
-<hr>
+    {% if owner != user %}
+    <h1 class="header-ls">Spaces Coming Soon</h1>
+    
+
+    {% else %}
+    <h1 class="header-ls">All of {{owner.username}} Spaces</h1>
+    <hr>
+
+{% endif %}
     {% if shops.count > 0 %}
 
     {% for shop in shops %}
@@ -54,6 +61,7 @@
 
         {% else %}
         <div class="text-center">
+   
             <h4 class="pg">{{user}} does not have any spaces</h1>
                
                 {% if request.user == user %}
