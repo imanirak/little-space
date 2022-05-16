@@ -35,7 +35,7 @@
 <div class="one-third column">&nbsp;</div>
 
 <div class="mx-3">
-<h1 class="header-ls">My Spaces</h1>
+<h1 class="header-ls">All of {{user}} Spaces</h1>
 <hr>
     {% if shops.count > 0 %}
 
@@ -53,7 +53,14 @@
        
 
         {% else %}
-    <h1>Create a shop</h1>
+        <div class="text-center">
+            <h4 class="pg">{{user}} does not have any spaces</h1>
+               
+                {% if request.user == user %}
+                <p>Would you like to create one?</p>
+            <a href="{% url 'shop_create' %}"><button class="btn btn-light" >Create A Space</button></a>
+            {% endif %}
+        </div>
 
 {% endif %}
 

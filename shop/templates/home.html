@@ -3,10 +3,15 @@
 
 
 {% if user.is_authenticated %}
-{% for shop in object_list %}
-<img src="{{ shop.cover.url}}" alt="{{ shop.name }}">
-hello
-{% endfor %}
+<div class="center wide-box">
+
+    <h1 class="header-ls">Popular Spaces</h1>
+    <hr>
+    <div class="overflow-auto">
+      
+    </div>
+</div>
+
 {% else %}
 
 <div class="spline">

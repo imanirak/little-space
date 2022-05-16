@@ -18,7 +18,7 @@ from .forms import ShopForm, ItemForm
 
 ###########################SIGNUP##################################
 
-@login_required
+
 def profile(request, username):
     owner = User.objects.get(username=username)
     shops = Shop.objects.filter(owner=owner.id)
@@ -58,14 +58,16 @@ class Home(TemplateView):
 @method_decorator(login_required, name="dispatch")
 class Shop_Create(CreateView):
   model = Shop
-  fields = '__all__'
+  fields = ['shop_logo', 'name', 'description']
   template_name='shop_create.html'
+  inventory = Inventory.objects.all()
 
   def form_valid(self, form):
     self.object = form.save(commit=False)
+    self.object.owner = self.request.user
     self.object.user = self.request.user
     self.object.save()
-    return HttpResponseRedirect('/shop/')
+    return HttpResponseRedirect('/item/new')
 
 
 
@@ -123,7 +125,7 @@ def Shop_Show(request, shop_id):
 @method_decorator(login_required, name="dispatch")
 class Inventory_Create(CreateView):
   model = Inventory
-  fields = '__all__'
+  fields = ['name']
   template_name='inventory_create.html'
 
   def form_valid(self, form):
@@ -239,7 +241,7 @@ class Item_Update(UpdateView):
 
 @method_decorator(login_required, name="dispatch")
 class Item_Delete(DeleteView):
-    model = Inventory
+    model = Item
     template_name = 'item_delete.html'
     success_url = "/item/"
 

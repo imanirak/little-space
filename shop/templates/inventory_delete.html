@@ -1,15 +1,38 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %} 
 {% block body %}
 
-<h1>Delete Inventory</h1>
+{% load crispy_forms_tags %}
 
-<form action="" method="POST">
+<div class="center">
+ <div class="one-third column">&nbsp;</div>
+<div class="one-third column"> 
+ <div class="form-box">
 
-    <h4>Are you sure you want to delete <strong>{{ inventory.name }}</strong>?</h4>
-                        {% csrf_token %}
-                        <input type="submit" value="Yes - Delete">
-                        <a href="{% url 'inventory_show' inventory.id %}">Cancel</a>
-                    </form>
+    <form action="" method="POST">
+   
+        <h4>Are you sure you want to delete <br><strong class="header-ls">{{ inventory.name }}</strong>?</h4>
+ 
+    <hr>
+                            {% csrf_token %}
+                            
+                            <div class="text-center">
+                             <input class="form-control"  type="submit" value="Yes - Delete">
+                             <a class="top-padding" href="{% url 'inventory_show' inventory.id %}">Cancel</a>
+                            </div>
+                        
+                        </form>
+    
+ <br>
+  </div>
+ </div>
+
+
+<div class="one-third column">&nbsp;</div>
+
+
+</div>
+
+
 
 {% endblock %}
