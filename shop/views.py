@@ -66,8 +66,10 @@ class Shop_Create(CreateView):
     self.object = form.save(commit=False)
     self.object.owner = self.request.user
     self.object.user = self.request.user
+    inventory = Inventory.objects.create()
     self.object.save()
-    return HttpResponseRedirect('/item/new')
+    return HttpResponseRedirect('/item/new', {'inventory':inventory})
+
 
 
 
@@ -172,7 +174,7 @@ class Inventory_Detail(DetailView):
 @method_decorator(login_required, name="dispatch")
 class Inventory_Update(UpdateView):
     model = Inventory
-    fields = '__all__'
+    fields = ['name', 'item']
     template_name = "inventory_update.html"
     def get_success_url(self):
         return reverse('inventory_detail', kwargs={'pk': self.object.pk})
@@ -198,14 +200,15 @@ def Inventory_Show(request, inventory_id):
 @method_decorator(login_required, name="dispatch")
 class Item_Create(CreateView):
   model = Item
-  fields = '__all__'
+  fields = ['name', 'item_type', 'item_description', 'item_img', 'condition','price']
   template_name='item_create.html'
 
   def form_valid(self, form):
     self.object = form.save(commit=False)
     self.object.user = self.request.user
     self.object.save()
-    return HttpResponseRedirect('/item/')
+    user = self.request.user
+    return HttpResponseRedirect(f'/user/{user}')
 
 
 

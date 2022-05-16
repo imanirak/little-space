@@ -6,19 +6,20 @@ Item List
 {% block body %}
 
 
-<div>
+<div class="wide-box center">
 
-        <h1> Item List</h1>
+        <h1 class="header-ls"> Item List</h1>
+        <hr>
         {% for item in items %}
-    
-                        <div>
-                        <td>{{item.name}} </td>
-                    
-                    
-                  <a href="{% url 'item_detail' item.id%}"><button>DETAILS</button></a> 
-                        </div>
-             
-       
+        
+<div>
+      <td>{{item.name}}</td>
+                           
+      <a href="{% url 'item_detail' item.id%}"><button class="btn bg-light float-right">DETAILS</button></a> 
+</div>
+                 
+               
+       <br>
            
     
         {% endfor %}
