@@ -1,19 +1,22 @@
 {% extends 'base.html' %} 
 {% block body %}
 
-<h1> Edit {{inventory.name}}</h1>
+<div class="wide-box center padding">
 
-    <h3>{{shop.owner}}</h3>
-    <h3>{{shop.item}}</h3>
-    <h3>{{shop.total}}</h3>
+  <h1 class="header-ls"> Edit {{inventory.name}}</h1>
+<hr>
+
+
+<div class="update text-center">
+
+  <a class="button button-details" href="{% url 'inventory_update' inventory.pk %}"><button class="btn btn-light">Edit {{inventory.name}}</button></a>
+  <a class="button button-details" href="{% url 'inventory_delete' inventory.pk %}"><button class="btn btn-light">Delete {{inventory.name}}</button></a>
+  
+  </div>
 
 </div>
 
-<div class="update">
 
-  <a href="{% url 'inventory_update' inventory.pk %}"><button>Edit {{inventory.name}}</button></a>
-  <a href="{% url 'inventory_delete' inventory.pk %}"><button>Delete {{inventory.name}}</button></a>
 
-</div>
 
 {% endblock %}
