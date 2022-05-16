@@ -1,0 +1,117 @@
+{% extends 'base.html' %} 
+{% block body %}
+<!-- 
+<div class="center">
+  <div class="d-flex flex-row wide-box">
+
+<div class="box">
+  </div>
+  -->
+
+  <div class="container center wide-box">
+    <div class="one-third column">
+      <div class="circle">
+        <img src="">
+<p class="header-ls">{{shop.name}}</p>
+<hr>
+  </div>
+
+  <h6>space owned by: <a href="/user/{{shop.owner}}">{{shop.owner}}</a></h6>
+
+  <p>{{shop.description}}
+    <span><a class=" float-right button-details btn" href="mailto:{{user.email}}">Contact Us</a></span></p>
+
+<p></p>
+<hr>
+    </div>
+
+
+<div class="one-third column"> 
+ <div class="container">
+            <div class="row">
+                  <div class="card col-md mx-3  " style="width: 18rem;">
+<!--                
+                 {% for inventory in shop.inventory.all %}
+
+
+                          <h5 class="card-title">{{inventory.name}}</h5>
+                          {% for item in inventory.item.all %}
+                          <img src="" class="card-img-top" alt="shoplogo">
+                          <div class="card-body">
+                          <h5 class="card-text">type | {{item.item_type}}</h5>
+                          <p>{{item.item_description}}</p>
+                          <h5 class="card-text">Condition | {{item.condition}}</h5>
+                          <p class="card-text">$ {{item.price}}</p>
+                          {% endfor %}
+                        {% endfor %}
+                          <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
+                        </div>
+       -->
+
+       {% for inventory in shop.inventory.all %}
+
+       {% for item in inventory.item.all %}
+   <div class="">
+     <div class="row">
+      <div class="card-body m5">
+        <img src="" class="card-img-top" alt="shoplogo">
+        <h5 class="card-text">type | {{item.item_type}}</h5>
+        <p>{{item.item_description}}</p>
+        <h5 class="card-text">Condition | {{item.condition}}</h5>
+        <p class="card-text">$ {{item.price}}</p>
+        <a class="btn button-details" href="{% url 'shop_detail' shop.id%}"> View {{shop.name}}</a>   
+       </div>
+    </div>
+  </div>
+     </div>
+     
+      
+       {% endfor %}
+     {% endfor %}
+    
+
+ </div>
+            
+       
+
+<hr>
+
+<div class="one-third column">
+
+  <div class="right text-center">
+    {% if shop.owner == user %}
+      <h5> Modify {{shop.name}}</h5>
+        <a href="{% url 'shop_update' shop.pk %}"><button class="btn btn-light" >Edit {{shop.name}}</button></a>
+        <a href="{% url 'shop_delete' shop.pk %}"><button class="btn btn-light">Delete {{shop.name}}</button></a>
+      </div>
+      {% endif %}
+</div>
+</div>
+
+</div>
+
+
+
+
+
+  <!-- <div class="box right">
+
+    {% for inventory in shop.inventory.all %}
+    <h3>{{inventory.item.name}}</h3>
+    {% endfor %}
+  
+  </div> -->
+
+
+
+
+
+
+   
+
+
+
+
+
+
+{% endblock %}

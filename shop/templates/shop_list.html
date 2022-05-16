@@ -11,7 +11,7 @@ Shop List
             <div class="row">
                   {% for shop in shops %}
                   <div class="card col-md mx-3" style="width: 18rem;">
-                        <img src="../static/media/300Logo.png" class="card-img-top" alt="shoplogo">
+                        <img src="../../media/{{shop.shop_logo}}" class="card-img-top" alt="shoplogo">
                         <div class="card-body">
                           <h5 class="card-title">{{shop.name}}</h5>
                           <h5 class="card-title">{{shop.owner}}</h5>

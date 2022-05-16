@@ -58,15 +58,16 @@ class Home(TemplateView):
 @method_decorator(login_required, name="dispatch")
 class Shop_Create(CreateView):
   model = Shop
-  fields = ['owner', 'shop_logo', 'name', 'description']
+  fields = ['shop_logo', 'name', 'description']
   template_name='shop_create.html'
   inventory = Inventory.objects.all()
 
   def form_valid(self, form):
     self.object = form.save(commit=False)
+    self.object.owner = self.request.user
     self.object.user = self.request.user
     self.object.save()
-    return HttpResponseRedirect('/shop/')
+    return HttpResponseRedirect('/item/new')
 
 
 
@@ -124,7 +125,7 @@ def Shop_Show(request, shop_id):
 @method_decorator(login_required, name="dispatch")
 class Inventory_Create(CreateView):
   model = Inventory
-  fields = ['name', 'item']
+  fields = ['name']
   template_name='inventory_create.html'
 
   def form_valid(self, form):

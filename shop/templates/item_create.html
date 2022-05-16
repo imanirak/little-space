@@ -10,7 +10,7 @@
   
     <h1 class="header-ls">Add Item to Inventory</h1>
     <hr>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <!-- Security Feature  -->
       {% csrf_token %} 
       <!--  Generate inputs  -->
