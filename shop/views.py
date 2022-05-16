@@ -131,7 +131,13 @@ class Inventory_Create(CreateView):
   def form_valid(self, form):
     self.object = form.save(commit=False)
     self.object.user = self.request.user
-    self.object.save()
+    inventory = self.object
+    print(inventory)
+    shop = Shop.objects.last()
+    print(shop)
+    shop_name = shop.name
+    inventory.name = shop_name + " " + str("Inventory")
+    inventory.save()
     return HttpResponseRedirect('/inventory/')
 
 

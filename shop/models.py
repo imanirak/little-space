@@ -27,7 +27,7 @@ class Item(models.Model):
         return self.name
 
 class Inventory(models.Model):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80,blank=True)
     item = models.ManyToManyField(Item, blank=True)
     total = models.PositiveIntegerField(default=0, blank=True)
     
