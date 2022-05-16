@@ -5,18 +5,20 @@ Inventory List
 {% block body %}
 
 
-<div>
 
-        <h1> Inventory:</h1>
+<div class="wide-box center">
+
+      <h1 class="header-ls"> Inventory List</h1>
+      <hr>
         {% for inventory in inventorys %}
     
                         <div>
                         <td>{{inventory.name}} {{shop.owner}}</td>
                     
                     
-                  <a href="{% url 'inventory_detail' inventory.id%}"><button>DETAILS</button></a> 
+                  <a href="{% url 'inventory_detail' inventory.id%}"><button class="btn bg-light float-right">DETAILS</button></a> 
                         </div>
-             
+             <br>
       
         {% endfor %}
 </div>
