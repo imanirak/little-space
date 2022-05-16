@@ -73,6 +73,7 @@
     <br>
     <a href="{% url 'shop_update' shop.pk %}"><button class="btn btn-light">Assign Inventory to {{shop.name}}</button></a>
     <a href="{% url 'item_create' %}"><button class="btn btn-light">Add Item to {{shop.name}}</button></a>
+    <a href="{% url 'inventory_list'%}"><button class="btn btn-light">View Inventory</button></a>
     </div>
 
 {% endif %}
