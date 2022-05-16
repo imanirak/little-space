@@ -10,6 +10,7 @@ pillow = "*"
 python-dotenv = "*"
 django-heroku = "*"
 gunicorn = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

@@ -80,6 +80,16 @@ body {
     width:580px;
   }
 
+  .form-box {
+    border-radius:10px;
+    margin:auto;
+    padding:40px;
+    height:40em;
+    width:500px;
+    overflow:none;
+    margin:20px 20px;
+  }
+
   .text-center{
       text-align:center;
   }
@@ -109,7 +119,11 @@ body {
 
 
 .top-padding {
-    margin:3em;
-    padding-top:3em;
+    height:auto;
+    padding-top:5em;
+    padding:auto;
 }
 
+.b-padding {
+    padding-bottom: 2em;
+}
